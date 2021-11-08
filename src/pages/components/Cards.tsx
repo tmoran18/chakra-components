@@ -1,12 +1,10 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { ExampleContainer } from '../../components/ExampleContainer'
 
 const Cards = () => {
 	return (
 		<div>
-			<Link href={{ pathname: '/preview', query: { component: 'card' } }}>
-				<a target='_blank'>Cards External</a>
-			</Link>
+			<ExampleContainer />
 		</div>
 	)
 }
