@@ -1,7 +1,7 @@
 import SidebarWithHeader from '../components/Sidebar'
-import Card from '../components/templates/Card/Card'
-import Sidebar from '../components/Sidebar'
 
-const Index = () => <Card />
+const Index = () => (
+	<SidebarWithHeader>This is the index page</SidebarWithHeader>
+)
 
 export default Index

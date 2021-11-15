@@ -7,9 +7,7 @@ import SidebarWithHeader from '../components/Sidebar'
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<ChakraProvider resetCSS theme={theme}>
-			<SidebarWithHeader>
-				<Component {...pageProps} />
-			</SidebarWithHeader>
+			<Component {...pageProps} />
 		</ChakraProvider>
 	)
 }

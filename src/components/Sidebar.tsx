@@ -19,11 +19,19 @@ import { FiMenu } from 'react-icons/fi'
 import { IconType } from 'react-icons'
 import { ReactText } from 'react'
 import { DarkModeSwitch } from './DarkModeSwitch'
+import link from 'next/link'
+import { upperCaseFirst } from '../Utils/upperCaseFirst'
 
 interface LinkItemProps {
+	subfolder?: string
+	category?: string
 	name: string
 }
-const LinkItems: Array<LinkItemProps> = [{ name: 'Cards' }, { name: 'Stats' }]
+const LinkItems: Array<LinkItemProps> = [
+	{ subfolder: '/', category: '', name: 'Home' },
+	{ subfolder: 'category', category: 'card', name: 'cards' },
+	{ subfolder: 'category', category: 'stat', name: 'Stats' },
+]
 
 export default function SidebarWithHeader({
 	children,
@@ -85,11 +93,18 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 			{LinkItems.map((link) => (
 				<Flex dir='column' pl={8} py={4}>
 					{router.pathname.includes(link.name) ? (
-						<NavItem active key={link.name}>
-							{link.name}
-						</NavItem>
+						<NavItem
+							active
+							key={link.name}
+							href={`${link.subfolder}/${link.category}/${link.name}`}
+							linkName={upperCaseFirst(link.name)}
+						></NavItem>
 					) : (
-						<NavItem key={link.name}>{link.name}</NavItem>
+						<NavItem
+							key={link.name}
+							href={`${link.subfolder}/${link.category}/${link.name}`}
+							linkName={upperCaseFirst(link.name)}
+						></NavItem>
 					)}
 				</Flex>
 			))}
@@ -98,15 +113,16 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 }
 
 interface NavItemProps extends FlexProps {
-	children: ReactText
+	linkName: string
 	active?: boolean
+	href: string
 }
 
-const NavItem = ({ children, active }: NavItemProps) => {
+const NavItem = ({ linkName, active, href }: NavItemProps) => {
 	return (
 		<Box borderBottom={active && `2px`} borderColor={active && 'blue.400'}>
-			<Link href={`/components/${children}`}>
-				<a>{children}</a>
+			<Link href={linkName == 'Home' ? '/' : `/${href}`}>
+				<a>{linkName}</a>
 			</Link>
 		</Box>
 	)

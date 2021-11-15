@@ -1,7 +1,7 @@
 import { Box, useColorModeValue, Button, Flex, Heading } from '@chakra-ui/react'
 import { HiPencilAlt } from 'react-icons/hi'
 
-const Card = () => {
+const CardWithUser = () => {
 	return (
 		<Box
 			bg={useColorModeValue('white', 'gray.700')}
@@ -73,4 +73,4 @@ const Property = (props) => {
 	)
 }
 
-export default Card
+export default CardWithUser

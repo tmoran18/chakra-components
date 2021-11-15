@@ -1,10 +1,9 @@
 import { Box } from '@chakra-ui/react'
 import { ExampleHeader } from './ExampleHeader'
 import { ExampleBody } from './ExampleBody'
+import { FunctionComponent } from 'react'
 
-import Card from './templates/Card/Card'
-
-export const ExampleContainer = () => {
+export const ExampleContainer: FunctionComponent = ({ children }) => {
 	return (
 		<Box
 			border='1px solid'
@@ -15,7 +14,7 @@ export const ExampleContainer = () => {
 		>
 			<ExampleHeader />
 			<ExampleBody bg='gray.600' py='10' px={10}>
-				<Card />
+				{children}
 			</ExampleBody>
 		</Box>
 	)
