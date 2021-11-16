@@ -31,7 +31,7 @@ export const ExampleBody = ({
 					<iframe
 						ref={ref}
 						onLoad={onLoad}
-						src='https://chakra-components-eight.vercel.app/components/card/card-with-user-preview'
+						src={`${process.env.BASE_URL}components/card/card-with-user-preview` || `http:localhost:3000/card/card-with-user-preview`}
 						width='100%'
 						height={height}
 						frameBorder='0'
