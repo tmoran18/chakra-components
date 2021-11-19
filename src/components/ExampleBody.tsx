@@ -22,7 +22,11 @@ export const ExampleBody = ({
 
 	const onLoad = () => {
 		setHeight(ref.current.contentWindow.document.body.scrollHeight + 'px')
-		console.log(process.env)
+		if (process.env.NODE_ENV === 'production') {
+			console.log('In production')
+		} else {
+			console.log('Not in production')
+		}
 	}
 	return (
 		<Box bg={bg} py={py} px={px} borderBottomRadius={10}>
@@ -31,7 +35,7 @@ export const ExampleBody = ({
 					<iframe
 						ref={ref}
 						onLoad={onLoad}
-						src={`https://chakra-components-eight.vercel.app/components/card/card-with-user-preview`}
+						src={`${process.env.BASE_URL}components/card/card-with-user-preview`}
 						width='100%'
 						height={height}
 						frameBorder='0'
