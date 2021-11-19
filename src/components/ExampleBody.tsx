@@ -22,7 +22,7 @@ export const ExampleBody = ({
 
 	const onLoad = () => {
 		setHeight(ref.current.contentWindow.document.body.scrollHeight + 'px')
-		console.log(ref.current.contentWindow)
+		console.log(process.env)
 	}
 	return (
 		<Box bg={bg} py={py} px={px} borderBottomRadius={10}>
@@ -31,7 +31,7 @@ export const ExampleBody = ({
 					<iframe
 						ref={ref}
 						onLoad={onLoad}
-						src={`${process.env.BASE_URL}components/card/card-with-user-preview` || `http:localhost:3000/card/card-with-user-preview`}
+						src={`${process.env.BASE_URL}components/card/card-with-user-preview`}
 						width='100%'
 						height={height}
 						frameBorder='0'
