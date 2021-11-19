@@ -7,7 +7,7 @@ interface exampleBodyProps {
 	py?: number | string
 	px?: number
 	maxWidth?: number
-	children: React.ReactNode
+	iframeURL: string
 }
 
 export const ExampleBody = ({
@@ -15,7 +15,7 @@ export const ExampleBody = ({
 	py,
 	px,
 	maxWidth,
-	children,
+	iframeURL,
 }: exampleBodyProps) => {
 	const ref = React.useRef<HTMLIFrameElement>(null)
 	const [height, setHeight] = React.useState('0px')
@@ -35,7 +35,7 @@ export const ExampleBody = ({
 					<iframe
 						ref={ref}
 						onLoad={onLoad}
-						src={`${process.env.BASE_URL}components/card/card-with-user-preview`}
+						src={iframeURL}
 						width='100%'
 						height={height}
 						frameBorder='0'
