@@ -6,7 +6,7 @@ interface exampleBodyProps {
     bg?: string
     py?: number | string
     px?: number
-    maxWidth?: number
+    maxWidth?: string | number | undefined
     iframeURL: string
 }
 
@@ -30,7 +30,7 @@ export const ExampleBody = ({
     }
     return (
         <Box bg={bg} py={py} px={px} borderBottomRadius={10}>
-            <Box maxWidth='1000px' margin='0 auto'>
+            <Box maxWidth={maxWidth} margin='0 auto'>
                 <Resizable minWidth={250} minHeight={height} bounds={'parent'}>
                     <iframe
                         ref={ref}

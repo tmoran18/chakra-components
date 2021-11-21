@@ -5,11 +5,14 @@ import { ExampleCode } from './ExampleCode'
 
 interface ExampleContainerProps {
     iframeURL: string
+    code: string
+    maxWidth?: string | number | undefined
+    previewURL: string
     children: React.ReactNode
 }
 
 export const ExampleContainer: React.FunctionComponent<ExampleContainerProps> =
-    ({ iframeURL }) => {
+    ({ iframeURL, code, maxWidth, previewURL }) => {
         return (
             <Box
                 border='1px solid'
@@ -17,14 +20,15 @@ export const ExampleContainer: React.FunctionComponent<ExampleContainerProps> =
                 borderRadius={8}
                 bg='white'
                 shadow='lg'>
-                <ExampleHeader>
+                <ExampleHeader previewURL={previewURL}>
                     <ExampleBody
                         iframeURL={iframeURL}
+                        maxWidth={maxWidth}
                         bg='gray.600'
                         py='10'
                         px={10}
                     />
-                    <ExampleCode />
+                    <ExampleCode code={code} />
                 </ExampleHeader>
             </Box>
         )
