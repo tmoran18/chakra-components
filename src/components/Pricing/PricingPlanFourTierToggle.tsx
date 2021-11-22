@@ -11,7 +11,7 @@ import {
     List,
     ListItem,
     ListIcon,
-    Flex,
+    Flex
 } from '@chakra-ui/react'
 
 import { useState } from 'react'
@@ -43,7 +43,7 @@ const PricingPlanFourTierToggle = ({ pricingPlansData }) => {
                 justify='center'
                 align='center'
                 wrap={'wrap'}
-                sx={{ gap: '20px' }}>
+                templateColumns="repeat(auto-fill, minmax(200px, 1fr))">
                 {pricingPlansData.map((plan) => (
                     <PricingCard
                         key={plan.title}
@@ -84,12 +84,14 @@ const PricingCard = ({
             padding={8}
             minH={'xl'}
             maxW={'sm'}
-            sx={{ gap: '1rem' }}>
-            <Heading as='h5' size='s'>
+            minW={'200px'}
+            margin={2}
+>
+            <Heading as='h5' size='s' py={1}>
                 {title}
             </Heading>
-            <Text>{description}</Text>
-            <Box>
+            <Text py={4}>{description}</Text>
+            <Box py={2}>
                 <Text>
                     <Text
                         as='span'
@@ -98,9 +100,9 @@ const PricingCard = ({
                     {`\\${paymentFrequency}`}
                 </Text>
             </Box>
-            <Button bg='black' color='white'>{`Buy ${title}`}</Button>
-            <Divider />
-            <List spacing={3} ml='24px' sx={{ textIndent: '-24px' }}>
+            <Button  bg='black' color='white'>{`Buy ${title}`}</Button>
+            <Divider py={4} />
+            <List py={3} spacing={3} ml='24px' sx={{ textIndent: '-24px' }}>
                 {featureList.map((feature, index) => (
                     <ListItem>
                         <ListIcon key={index} as={FiCheck} color='green.500' />
